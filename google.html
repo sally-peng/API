@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        width: 100%;
+        height: 400px;
+      }
+      p{
+        color:rgb(122,36,172);}
+      body{
+        background-image: url("http://static.vecteezy.com/system/resources/previews/000/093/720/original/vector-abstract-style-background-illustration.jpg");
+        text-align: center;
+      }
+      h3 {
+        color:rgb(172,36,131);
+        text-align: center;
+        font-size: 60px;
+        text-shadow: 1px 1px rgb(255,255,255);
+      }
+    </style>
+    <title>Map Fun</title>
+  </head>
+  <body>
+    <h3>My Favorite Places!!!</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var myLatLng={lat: 40.769550, lng: -73.731282};
+        var schoolpos={lat:40.785562, lng:-73.953772};
+        var aspcapos={lat:40.780149, lng:-73.945711};
+        var nybcpos={lat:40.765591, lng:-73.834285};
+        var gwcpos={lat:40.757976, lng:-73.984855};
+        var healthpos={lat:40.760014, lng:-73.994750};
+        var gardenpos={lat:40.764828, lng:-73.817893};
+        var mapDiv = document.getElementById('map');
+        var mapOptions={
+          zoom:12,
+          center:{lat:40.742575, lng:-73.814499},
+          mapTypeId:'hybrid'
+        }
+        var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+        var contentString = '<div id="content">' + '<p>This is my Little Neck home! I live here with my family, aka my mum and dad. I have been here since 2009, when I went to P.S. 94.</p>';
+        var schoo= '<div id="content">' + '<p>Hunter College High School is where I go every day for class! During my 5 years at Hunter, I met so many amazing people and formed many friendships. In September, I will be starting my senior year.</p>';
+        var as= '<div id="content">' + '<p>This is ASPCA, shorthand for the American Society for the Prevention of Cruelty to Animals! I volunteer here almost every day, and it has become a place where I can relax, talk to fellow volunteers, drink some tea and play with cats. Pretty awesome.</p>';
+        var nyb='<div id="content">' + '<p>New York Badminton Center is where I train every Friday! I spend 3-4 hours here and play badminton hardcore with all of my friends. It feels like my second home and I like it more than CPBC! I like CP too but NYBC has more of a special meaning for me.</p>';
+        var gw='<div id="content">' + '<p>This is where we have Girls Who Code classes! I have a LOT of fun here, even if it means waking up early every day. Productive way to spend the summer! Since our building is in Times Square, there are SO many tourists whenever I come here. It gets annoying sometimes, but honestly who am I to say? (Sally is a tourist too...)</p>';
+        var heal='<div id="content">' + "<p>This is where I rock climb with my friends! I took rock climbing during second semester of my Junior year and I fell in love with it. I find it really relaxing, even if I'm not a particularly good climber.</p>";
+        var garde='<div id="content">' + "<p>The Korean Barbeque here is AMAZING. (Actually once it gave me diahrrea but whatever... :3) I came here with my best friend for the first time over a year ago. I was with her family and we had a great time. Later, during my badminton season in my sophomore year, we had our team dinner here. I was super hyped and dressed up and everything but couldn't make it :(</p>";
+
+        var infowindow=new google.maps.InfoWindow({
+          content:contentString
+        });
+
+        var infowindow2=new google.maps.InfoWindow({
+          content:schoo
+        });
+
+        var infowindow3=new google.maps.InfoWindow({
+          content:as
+        });
+
+        var infowindow4=new google.maps.InfoWindow({
+          content:nyb
+        });
+
+        var infowindow5=new google.maps.InfoWindow({
+          content:gw
+        });
+
+        var infowindow6=new google.maps.InfoWindow({
+          content:heal
+        });
+
+        var infowindow7=new google.maps.InfoWindow({
+          content:garde
+        });
+
+        var house={
+          url:'http://vignette3.wikia.nocookie.net/scribblenauts/images/0/0f/Tree_House.png/revision/latest?cb=20130306202923',
+          scaledSize: new google.maps.Size(35,35),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var school={
+          url:'http://www.clipartbest.com/cliparts/4c9/oqE/4c9oqE7Mi.png',
+          scaledSize: new google.maps.Size(35,35),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var aspca={
+          url:'http://www.clker.com/cliparts/Q/0/a/r/h/S/paw-print-hi.png',
+          scaledSize: new google.maps.Size(35,35),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var nybc={
+          url:'http://pngimg.com/upload/badminton_PNG10439.png',
+          scaledSize: new google.maps.Size(40,40),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var gwc={
+          url:'http://www.thebostoncalendar.com/system/events/photos/000/061/811/original/GWC_logo_2016_.png?1455277763',
+          scaledSize: new google.maps.Size(65,40),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var health={
+          url:'http://www.iceclimbingworldcup.ch/pics/climber2.jpg',
+          scaledSize: new google.maps.Size(35,35),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var garden={
+          url:'https://www.sonnysbbq.com/media/FeaturedHomepageItem/ribs.png',
+          scaledSize: new google.maps.Size(45,45),
+          origin:new google.maps.Point(0,0),
+          anchor: new google.maps.Point(5,5)
+        };
+
+        var marker=new google.maps.Marker({
+          position:myLatLng,
+          map:map,
+          icon:house
+        });
+
+        var marker2=new google.maps.Marker({
+          position:schoolpos,
+          map:map,
+          icon:school
+        });
+
+        var marker3=new google.maps.Marker({
+          position:aspcapos,
+          map:map,
+          icon:aspca
+        });
+
+        var marker4=new google.maps.Marker({
+          position:nybcpos,
+          map:map,
+          icon:nybc
+        });
+
+        var marker5=new google.maps.Marker({
+          position:gwcpos,
+          map:map,
+          icon:gwc
+        });
+
+        var marker6=new google.maps.Marker({
+          position:healthpos,
+          map:map,
+          icon:health
+        });
+
+        var marker7=new google.maps.Marker({
+          position:gardenpos,
+          map:map,
+          icon:garden
+        });
+
+        marker.addListener('click',function(){
+        infowindow.open(map,marker)});
+        marker2.addListener('click',function(){
+        infowindow2.open(map,marker2)});
+        marker3.addListener('click',function(){
+           infowindow3.open(map,marker3)});
+        marker4.addListener('click',function(){
+           infowindow4.open(map,marker4)});
+        marker5.addListener('click',function(){
+           infowindow5.open(map,marker5)});
+        marker6.addListener('click',function(){
+           infowindow6.open(map,marker6)});
+        marker7.addListener('click',function(){
+           infowindow7.open(map,marker7)});
+
+
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbBEO4jy0hY4jWYaY5Y-WkNKx8tEA_FGE&callback=initMap">
+    </script>
+  </body>
+</html>
